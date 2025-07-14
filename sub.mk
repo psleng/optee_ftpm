@@ -9,8 +9,8 @@ CFG_FTPM_TA_TEE_STORAGE_ID ?= TEE_STORAGE_PRIVATE
 # files here will make sure the correct files are used first.
 #
 
-cppflags-y += -include reference/include/VendorString.h
-cppflags-y += -include platform/include/Platform.h
+# PERLE cppflags-y += -include reference/include/VendorString.h
+# PERLE cppflags-y += -include platform/include/Platform.h
 
 cppflags-y += -DHASH_LIB=MBEDTLS -DSYM_LIB=TEE -DMATH_LIB=TEE
 cppflags-y += -DALG_CAMELLIA=ALG_NO -DALG_KDF2=ALG_NO
@@ -31,10 +31,15 @@ endif
 global-incdirs-y += include
 global-incdirs-y += reference/include
 global-incdirs-y += platform/include
+# PERLE - new include paths
+# global-incdirs-y += $(CFG_MS_TPM_20_REF)/TPMCmd/TpmConfiguration
 
 global-incdirs_ext-y += $(CFG_MS_TPM_20_REF)/TPMCmd/tpm/include
 global-incdirs_ext-y += $(CFG_MS_TPM_20_REF)/TPMCmd/tpm/include/prototypes
 global-incdirs_ext-y += $(CFG_MS_TPM_20_REF)/TPMCmd/Platform/include
+# PERLE - new include paths
+# global-incdirs_ext-y += $(CFG_MS_TPM_20_REF)/TPMCmd/tpm/include/private
+# global-incdirs_ext-y += $(CFG_MS_TPM_20_REF)/TPMCmd/TpmConfiguration
 
 cflags-y += -Wno-cast-align
 cflags-y += -Wno-implicit-fallthrough
@@ -265,15 +270,18 @@ srcs_ext-y += crypt/CryptSmac.c
 srcs_ext-y += crypt/CryptEccData.c
 srcs_ext-y += crypt/CryptCmac.c
 srcs_ext-y += crypt/BnMath.c
+# PERLE srcs_ext-y += ../cryptolibs/TpmBigNum/BnMath.c
 srcs_ext-y += crypt/CryptEccSignature.c
 srcs_ext-y += crypt/AlgorithmTests.c
 srcs_ext-y += crypt/CryptSelfTest.c
 srcs_ext-y += crypt/Ticket.c
 srcs_ext-y += crypt/CryptDes.c
 srcs_ext-y += crypt/BnMemory.c
+# PERLE srcs_ext-y += ../cryptolibs/TpmBigNum/BnMemory.c
 srcs_ext-y += crypt/CryptPrimeSieve.c
 srcs_ext-y += crypt/CryptEccKeyExchange.c
 srcs_ext-y += crypt/BnConvert.c
+# PERLE srcs_ext-y += ../cryptolibs/TpmBigNum/BnConvert.c
 srcs_ext-y += crypt/CryptRand.c
 srcs_ext-y += crypt/CryptEccMain.c
 srcs_ext-y += crypt/CryptSym.c
