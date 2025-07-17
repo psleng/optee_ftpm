@@ -51,6 +51,8 @@
 #include <stdint.h>
 #include <trace.h>
 #include "swap.h"
+// PERLE - added includes
+#include "BaseTypes.h"
 #include "TpmProfile.h"
 #include "TpmSal.h"
 #include "TpmError.h"

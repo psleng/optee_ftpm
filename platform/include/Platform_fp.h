@@ -40,6 +40,9 @@
 #ifndef    _PLATFORM_FP_H_
 #define    _PLATFORM_FP_H_
 
+// PERLE - added macros include
+#include "GpMacros.h"
+
 //** From EPS.c
 
 LIB_EXPORT void

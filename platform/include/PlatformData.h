@@ -38,6 +38,9 @@
 #ifndef _PLATFORM_DATA_H_
 #define _PLATFORM_DATA_H_
 
+// PERLE - new includes
+#include <stdint.h>
+#include "BaseTypes.h"
 
 #include      "TpmProfile.h"
 
